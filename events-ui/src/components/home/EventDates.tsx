@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   List,
   ListItem,
@@ -8,28 +8,13 @@ import {
 } from "@mui/material";
 import "../../styles/EventDates.scss";
 import { voteForDate } from "../../services/apiService";
-
-interface Date {
-  _id: string;
-  date: string;
-}
-
-interface Event {
-  _id: string;
-  name: string;
-  dates: Date[];
-}
-
-interface EventDatesProps {
-  event: Event;
-  onVote: () => void;
-}
+import { DateProps, EventDatesProps, VoteSubmitPayload } from "../interfaces/event.interface";
 
 const EventDates: React.FC<EventDatesProps> = ({ event, onVote }) => {
-  const [dates, setDates] = useState<Date[]>(event.dates);
+  const dates: DateProps[] = event.dates;
 
   const handleVote = async (dateId: string) => {
-    const request = {
+    const request : VoteSubmitPayload = {
       dateId,
       eventId: event._id,
       userId: localStorage.getItem("userId"),

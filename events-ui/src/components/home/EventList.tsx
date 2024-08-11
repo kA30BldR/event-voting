@@ -11,32 +11,18 @@ import {
 import EventModal from "./EventModal";
 import "../../styles/EventList.scss";
 import { getEvents } from "../../services/apiService";
+import { EventProps } from "../interfaces/event.interface";
 
 interface ResetProps {
   reset: boolean;
 }
-interface User {
-  name: string;
-}
-
-interface Date {
-  _id: string;
-  date: string;
-}
-
-interface Event {
-  _id: string;
-  name: string;
-  user?: User;
-  dates: Date[];
-}
 
 const EventList: React.FC<ResetProps> = ({ reset }) => {
-  const [events, setEvents] = useState<Event[]>([]);
+  const [events, setEvents] = useState<EventProps[]>([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<EventProps | null>(null);
   const [showModal, setShowModal] = useState<"vote" | "result" | null>(null);
 
   useEffect(() => {
@@ -72,7 +58,7 @@ const EventList: React.FC<ResetProps> = ({ reset }) => {
     setSelectedEvent(null);
   };
 
-  const handleSelectEvent = (event: Event) => {
+  const handleSelectEvent = (event: EventProps) => {
     setSelectedEvent(event);
     handleOpenModal("vote");
   };

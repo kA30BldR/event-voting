@@ -2,7 +2,11 @@ import axios from "axios";
 import {
   LoginPayload,
   RegisterPayload,
-} from "../components/auth/AuthInterface";
+} from "../components/interfaces/auth.interface";
+import {
+  EventDatesPayload,
+  VoteSubmitPayload,
+} from "../components/interfaces/event.interface";
 
 // Create an axios instance
 const api = axios.create({
@@ -31,8 +35,10 @@ export const loginUser = (userPayload: LoginPayload) =>
   api.post(`auth/login`, userPayload);
 
 //post
-export const createUserEvent = (request: any) => api.post(`/events`, request);
-export const voteForDate = (request: any) => api.post(`/votes`, request);
+export const createUserEvent = (request: EventDatesPayload) =>
+  api.post(`/events`, request);
+export const voteForDate = (request: VoteSubmitPayload) =>
+  api.post(`/votes`, request);
 
 //get
 export const getEvents = () => api.get("/events");

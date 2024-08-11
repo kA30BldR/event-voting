@@ -8,27 +8,15 @@ import {
 } from "@mui/material";
 import "../../styles/EventResult.scss";
 import { getEventResult } from "../../services/apiService";
-
-
-
-interface Date {
-  _id: string;
-  date: string;
-}
+import { DateProps, EventProps } from "../interfaces/event.interface";
 
 interface DateResult {
-  date: Date;
+  date: DateProps;
   votes: number;
 }
 
-interface Event {
-  _id: string;
-  name: string;
-  dates: Date[];
-}
-
 interface EventResultProps {
-  event: Event;
+  event: EventProps;
 }
 
 const EventResult: React.FC<EventResultProps> = ({ event }) => {

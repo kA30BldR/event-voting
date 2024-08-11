@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 import "../../styles/AuthStyles.scss";
 import { registerUser } from "../../services/apiService";
 import { useNavigate } from "react-router-dom";
-import { RegisterPayload } from "./AuthInterface";
 import { AxiosResponse } from "axios";
+import { RegisterPayload } from "../interfaces/auth.interface";
 
 const Register: React.FC = () => {
   const [name, setName] = useState("");

@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../styles/AuthStyles.scss";
 import { loginUser } from "../../services/apiService";
 import { AxiosResponse } from "axios";
-import { LoginPayload } from "./AuthInterface";
+import { LoginPayload } from "../interfaces/auth.interface";
 
 const SignIn: React.FC = () => {
   const [email, setEmail] = useState("");

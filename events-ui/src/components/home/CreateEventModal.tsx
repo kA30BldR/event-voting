@@ -10,8 +10,9 @@ import {
 } from "@mui/material";
 import SimpleDatePicker from "./SimpleDatePicker";
 import { Dayjs } from "dayjs";
-import { AxiosResponse } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { createUserEvent } from "../../services/apiService";
+import { EventDatesPayload } from "../interfaces/event.interface";
 
 interface CreateEventlProps {
   open: boolean;
@@ -23,7 +24,7 @@ const CreateEventModal: React.FC<CreateEventlProps> = ({ open, onClose }) => {
   const [selectedDates, setSelectedDates] = useState<Dayjs[]>([]);
 
   const createEvent = async () => {
-    const request = {
+    const request: EventDatesPayload = {
       name: event,
       dates: selectedDates.map((d) => ({ date: d })),
       createdBy: localStorage.getItem("userId"),
@@ -32,7 +33,7 @@ const CreateEventModal: React.FC<CreateEventlProps> = ({ open, onClose }) => {
       .then((res: AxiosResponse) => {
         onClose();
       })
-      .catch((err: any) => console.log(err));
+      .catch((err: AxiosError) => console.log(err));
   };
 
   return (
