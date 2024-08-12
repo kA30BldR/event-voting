@@ -10,7 +10,7 @@ import {
 
 // Create an axios instance
 const api = axios.create({
-  baseURL: "http://localhost:4000/",
+  baseURL: process.env.GATEWAY_URL,
   headers: {
     "Content-Type": "application/json",
   },
@@ -30,9 +30,9 @@ api.interceptors.request.use(
 
 //auth
 export const registerUser = (userPayload: RegisterPayload) =>
-  api.post(`auth/register`, userPayload);
+  api.post(`/auth/register`, userPayload);
 export const loginUser = (userPayload: LoginPayload) =>
-  api.post(`auth/login`, userPayload);
+  api.post(`/auth/login`, userPayload);
 
 //post
 export const createUserEvent = (request: EventDatesPayload) =>

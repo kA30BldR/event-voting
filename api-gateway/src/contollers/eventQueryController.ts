@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import axios from "axios";
+import { ENV } from "../config/env";
 
-const EVENT_QUERY_SERVICE_URL = "http://localhost:4004";
+const EVENT_QUERY_SERVICE_URL = ENV.QUERY_SERVICE_URL;
 
 const handleError = (error: unknown, res: Response) => {
   if (axios.isAxiosError(error)) {

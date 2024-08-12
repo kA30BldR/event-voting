@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { QueryHandler, IQueryHandler, IQuery } from '@nestjs/cqrs';
 import { InjectModel } from '@nestjs/mongoose';
 import { EventDocument } from '../models/event.model';
@@ -22,7 +22,7 @@ export class EventQueryHandler implements IQueryHandler<QueryType> {
     if (id) {
       const event = await this.eventModel.findById(id).exec();
       if (!event) {
-        throw new Error('Event not found');
+        throw new NotFoundException('Event not found');
       }
       return event;
     } else {

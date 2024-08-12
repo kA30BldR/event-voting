@@ -1,7 +1,8 @@
 import { Request, Response, NextFunction } from "express";
 import axios from "axios";
+import { ENV } from "../config/env";
 
-const AUTH_SERVICE_URL = "http://localhost:4001";
+const AUTH_SERVICE_URL = ENV.USER_SERVICE_URL;
 
 export const verifyToken = async (
   req: Request,

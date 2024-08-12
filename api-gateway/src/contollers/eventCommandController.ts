@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import axios from "axios";
+import { ENV } from "../config/env";
 
-const EVENT_COMMAND_SERVICE_URL = "http://localhost:4003";
+const EVENT_COMMAND_SERVICE_URL = ENV.COMMAND_SERVICE_URL;
 
 const handleError = (error: unknown, res: Response) => {
   if (axios.isAxiosError(error)) {

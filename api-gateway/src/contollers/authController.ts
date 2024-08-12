@@ -1,11 +1,10 @@
 import { Request, Response } from 'express';
 import axios from 'axios';
-
-const USER_SERVICE_URL = 'http://localhost:4001';
+import { ENV } from '../config/env';
 
 export const register = async (req: Request, res: Response) => {
   try {
-    const response = await axios.post(`${USER_SERVICE_URL}/auth/register`, req.body);
+    const response = await axios.post(`${ENV.USER_SERVICE_URL}/auth/register`, req.body);
     res.status(response.status).json(response.data);
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {
@@ -18,7 +17,7 @@ export const register = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   try {
-    const response = await axios.post(`${USER_SERVICE_URL}/auth/login`, req.body);
+    const response = await axios.post(`${ENV.USER_SERVICE_URL}/auth/login`, req.body);
     res.status(response.status).json(response.data);
   } catch (error: unknown) {
     if (axios.isAxiosError(error)) {

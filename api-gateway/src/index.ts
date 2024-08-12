@@ -5,9 +5,10 @@ import * as authController from "./contollers/authController";
 import * as eventCommandController from "./contollers/eventCommandController";
 import * as eventQueryController from "./contollers/eventQueryController";
 import { verifyToken } from "./middleware/authMiddleware";
+import { ENV } from "./config/env";
 
 const app = express();
-const PORT = process.env.PORT || 4000;
+const PORT = ENV.PORT;
 app.use(cors());
 app.use(bodyParser.json());
 

@@ -2,6 +2,9 @@ import express, { Application } from "express";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import authRoutes from "./routes/authRoutes";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const app: Application = express();
 const PORT = process.env.PORT || 4001;
@@ -9,7 +12,7 @@ const PORT = process.env.PORT || 4001;
 app.use(bodyParser.json());
 
 mongoose
-  .connect("DB_URL")
+  .connect(process.env.DB_URL as string)
   .then(() => {
     console.log("Connected to MongoDB");
   })
